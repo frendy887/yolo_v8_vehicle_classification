@@ -11,7 +11,7 @@ RTSP_URL = "rtsp://admin:admin@192.168.18.91:8554/Streaming/Channels/101"
 VIDEOS_DIR = os.path.join('.', 'videos')
 VIDEO_PATH = os.path.join(VIDEOS_DIR, 'truck-test.mp4')
 
-cap = cv2.VideoCapture(RTSP_URL)
+cap = cv2.VideoCapture(VIDEO_PATH)
 ret, frame = cap.read()
 
 H, W, _ = frame.shape
@@ -32,7 +32,7 @@ mycursor = mydb.cursor()
 
 # Model Yolo
 # doc : https://docs.ultralytics.com/models
-model_path = os.path.join('.', 'yolov8m.pt')
+model_path = os.path.join('.', 'yolov8n.pt')
 
 # Load the model
 model = YOLO(model_path)  # Load a custom YOLO model
@@ -217,6 +217,10 @@ while ret:
 
     # Check if the user presses the 'q' key to exit the loop
     if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+    # close with cross button
+    if cv2.getWindowProperty('YOLO Object Detection', cv2.WND_PROP_VISIBLE) < 1:
         break
 
     # Read the next frame

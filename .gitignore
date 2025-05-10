@@ -3,3 +3,4 @@ runs/
 dist/
 build/
 videos/
+*.pt
