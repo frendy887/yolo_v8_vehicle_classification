@@ -1,0 +1,1 @@
+pyinstaller --onefile --name=deteksi_yolo_v8_RTSP --collect-submodules=mysql.connector --add-data "C:\Users\msila\AppData\Local\Programs\Python\Python38\Lib\site-packages\mysql\connector\locales;mysql\connector\locales" predict_calculate_area_cctv_hd.py
